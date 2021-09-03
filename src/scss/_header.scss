@@ -1,0 +1,98 @@
+@import "variables";
+@import "mixin";
+
+.menu-navigation {
+  position: absolute;
+  z-index: 25;
+  top: 84px;
+  bottom: 0;
+  display: none;
+  right: 0;
+  width: 210px;
+  background: $white;
+
+  @include breakpoint($mobile) {
+    top: 55px;
+  }
+
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px 21px 10px;
+    background: $white;
+    box-shadow: 0 8px 17px -2px rgba(34, 60, 80, 0.25);
+    border-radius: 5px;
+
+    .mobile-block {
+      display: none;
+      text-align: center;
+
+      @include breakpoint($mobile) {
+        display: block;
+      }
+    }
+
+    .text-user {
+      @include breakpoint($mobile) {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 20px;
+        border-bottom: solid 1px $red;
+      }
+    }
+
+    li {
+      position: relative;
+      margin-bottom: 0;
+      text-align: right;
+
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.show-menu {
+  display: block;
+}
+
+.btn-menu {
+  z-index: 103;
+  background: transparent;
+  border: dotted 1px #9A9A9A;
+  padding: 24px;
+  position: relative;
+  margin-left: 55px;
+
+  @include breakpoint($mobile) {
+    display: none;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 10px;
+    background-image: url("../images/triangle.svg");
+    background-repeat: no-repeat;
+  }
+
+}
+
+.active {
+  &:after {
+    left: 38%;
+    transform: rotate(178deg);
+    transition: all .25s ease;
+    top: 38%;
+  }
+}
+
